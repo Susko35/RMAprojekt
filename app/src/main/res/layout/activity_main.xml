@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="128dp"
+        android:layout_marginHorizontal="35dp"
+        android:id="@+id/inputText"
+        android:inputType="text"
+        android:digits="qwertzuiopšđasdfghjklčćžyxcvbnmQWERTZUIOPŠĐASDFGHJKLČĆŽYXCVBNM"
+    />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/inputText"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="35dp"
+        android:height="50dp"
+        android:id="@+id/buttonTranslate"
+        android:text="TRANSLATE"
+        android:textSize="26dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Output"
+        android:id="@+id/outputText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="64px"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
