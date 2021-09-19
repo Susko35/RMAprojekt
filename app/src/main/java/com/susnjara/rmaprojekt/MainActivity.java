@@ -43,13 +43,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 translate();
+                DbHelper myDB = new DbHelper(MainActivity.this);
+                myDB.addT(outputTextTitle.getText().toString().trim(), outputText.getText().toString().trim());
             }
         });
 
         buttonSwitch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), HistoryActivity.class);
+                Intent intent = new Intent(MainActivity.this, HistoryActivity.class);
                 startActivity(intent);
             }
         });
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             }
             @Override
             public void onFailure(Call<Translate> call, Throwable t) {
-                outputText.setText(t.getMessage());
+                outputTextTitle.setText(t.getMessage());
             }
         });
 
@@ -98,6 +100,6 @@ public class MainActivity extends AppCompatActivity {
         String translation = response.body().getEn();
         String definition = response.body().getDef();
         outputTextTitle.setText("\n" + translation + "\n");
-        outputText.setText("\n Definition\n " + definition);
+        outputText.setText("\n " + definition);
     }
 }
