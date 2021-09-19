@@ -18,7 +18,7 @@ public class HistoryActivity extends AppCompatActivity {
     private  RecyclerView.LayoutManager layoutManager;
     ArrayList<String> id, title, def;
     DbHelper myDB;
-    Button buttonSwitchBack;
+    Button buttonSwitchBack, buttonDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +45,16 @@ public class HistoryActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(HistoryActivity.this, MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myDB.deleteAllData();
+                finish();
+                startActivity(getIntent());
             }
         });
     }

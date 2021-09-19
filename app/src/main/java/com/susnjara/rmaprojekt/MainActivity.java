@@ -43,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 translate();
-                DbHelper myDB = new DbHelper(MainActivity.this);
-                myDB.addT(outputTextTitle.getText().toString().trim(), outputText.getText().toString().trim());
             }
         });
 
@@ -83,6 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 String error = response.body().getError();
                 if(error.equals("none")) {
                     translateOutput(response);
+                    DbHelper myDB = new DbHelper(MainActivity.this);
+                    myDB.addT(outputTextTitle.getText().toString().trim(), outputText.getText().toString().trim());
                 }
                 else {
                     outputTextTitle.setText("Response\n" + error);
