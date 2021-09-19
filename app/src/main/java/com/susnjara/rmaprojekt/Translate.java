@@ -8,8 +8,11 @@ public class Translate {
     private String en;
     @SerializedName("def")
     private String def;
+    @SerializedName("error")
+    private String error;
 
-    public Translate(String data) {
+    public Translate(String en, String def, String error) {
+        this.error = error;
         this.en = en;
         this.def = def;
     }
@@ -19,5 +22,9 @@ public class Translate {
     }
     public String getDef() {
         return def;
+    }
+
+    public String getError() {
+        return error;
     }
 }

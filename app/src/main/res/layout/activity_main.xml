@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="128dp"
+        android:layout_marginTop="100dp"
         android:layout_marginHorizontal="35dp"
         android:id="@+id/inputText"
         android:inputType="text"
@@ -21,20 +21,45 @@
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/inputText"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_margin="35dp"
+        android:layout_margin="15dp"
         android:height="50dp"
         android:id="@+id/buttonTranslate"
         android:text="TRANSLATE"
         android:textSize="26dp"/>
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/outputTextTitle"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTranslate"
+        android:textSize="80px"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:layout_margin="35dp"/>
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Output"
+        android:text=""
         android:id="@+id/outputText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="64px"/>
+        android:textSize="64px"
+        android:gravity="left"
+        android:textStyle="italic"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_margin="15dp"
+        android:height="50dp"
+        android:id="@+id/buttonSwitch"
+        android:text="HISTORY"
+        android:textSize="26dp"
+        android:textColor="@color/black"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

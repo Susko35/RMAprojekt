@@ -12,7 +12,7 @@ let db = new sqlite3.Database('./db/data.db');
 
 app.get('/translate/:id', (req, res) => {
     console.log("Accessed api, translate:" + req.params.id)
-    var response = { 'en': '', 'def': '' };
+    var response = { 'en': '', 'def': '', 'error':'none' };
     let query = 'SELECT en FROM translate WHERE hr = "' + req.params.id + '";';
     db.get(query, (err, rows) => {
         if (err) {
@@ -20,7 +20,8 @@ app.get('/translate/:id', (req, res) => {
         }
         else {
             if (rows === undefined) {
-                res.json({ "error": "notfound" });
+                response['error'] = 'Error: not found!'
+                res.json(response);
                 res.end();
             }
             else {
