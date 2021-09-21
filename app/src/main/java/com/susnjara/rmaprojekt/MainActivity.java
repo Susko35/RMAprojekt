@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 
 import retrofit2.Call;
@@ -35,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //DbHelper myDB = new DbHelper(MainActivity.this);
+        //myDB.deleteAllData();
 
         initItems();
 
@@ -68,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         String input = inputText.getText().toString();
         if(input.isEmpty()) {
             outputTextTitle.setText("no input");
+            outputText.setText("");
             return;
         }
         Call<Translate> call = retrofit.getMyApi().getTranslation(input);
@@ -76,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<Translate> call, Response<Translate> response) {
                 if (!response.isSuccessful()) {
                     outputTextTitle.setText("Code: " + response.code());
+                    outputText.setText("");
                     return;
                 }
                 String error = response.body().getError();
@@ -86,12 +90,14 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else {
                     outputTextTitle.setText("Response\n" + error);
+                    outputText.setText("");
                 }
 
             }
             @Override
             public void onFailure(Call<Translate> call, Throwable t) {
                 outputTextTitle.setText(t.getMessage());
+                outputText.setText("");
             }
         });
 

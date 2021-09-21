@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -29,6 +30,7 @@ public class HistoryActivity extends AppCompatActivity {
         id = new ArrayList<>();
         title = new ArrayList<>();
         def = new ArrayList<>();
+
 
         storeDataInArrays();
         recyclerView = findViewById(R.id.searches);
@@ -62,11 +64,12 @@ public class HistoryActivity extends AppCompatActivity {
     void storeDataInArrays(){
         Cursor cursor = myDB.readT();
         if(cursor.getCount() == 0){
+            Toast.makeText(this, "Empty!", Toast.LENGTH_SHORT).show();
         }else{
             while (cursor.moveToNext()){
                 id.add(cursor.getString(0));
                 title.add(cursor.getString(1));
-                def.add(cursor.getString(1));
+                def.add(cursor.getString(2));
 
             }
         }
